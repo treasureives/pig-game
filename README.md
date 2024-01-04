@@ -1,0 +1,1 @@
+Fun Pig game to play with a friend. The first one to reach 100 hundred wins but if you roll a one on your dice you lose all your points.

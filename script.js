@@ -50,7 +50,7 @@ document.querySelector('.btn--roll').addEventListener('click', function(){
         const dice = Math.trunc(Math.random() * 6) + 1
 
         // Display correct dice image dynamically  
-        diceEl.setAttribute('src', `dice-${dice}.png`)
+        diceEl.setAttribute('src', `images/dice-${dice}.png`)
         diceEl.classList.remove('hidden')
         
         if (dice !== 1) {
@@ -77,7 +77,7 @@ document.querySelector('.btn--hold').addEventListener('click', function() {
         document.getElementById(`current--${activePlayer}`).textContent = 0 
             
         // if score is above 100
-        if (scores[activePlayer] >= 10) {
+        if (scores[activePlayer] >= 100) {
             playing = false
             diceEl.classList.add('hidden')
 
