@@ -9,16 +9,30 @@ const current1El = document.getElementById('current--1')
 const player0El = document.querySelector('.player--0')
 const player1El = document.querySelector('.player--1')
 
-// starting conditions
-score0El.textContent = 0
-score1El.textContent = 0
+let scores, currentScore, activePlayer, playing
 
-const scores = [0, 0]
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true
+function IntialiseGame() {
+    // starting conditions
+    scores = [0, 0]
+    currentScore = 0;
+    activePlayer = 0;
+    playing = true
 
-diceEl.classList.add('hidden')
+    current0El.textContent = 0
+    current1El.textContent = 0
+    score0El.textContent = 0
+    score1El.textContent = 0
+    
+    // Styling settings
+    diceEl.classList.add('hidden')
+    player0El.classList.remove('player--winner')
+    player1El.classList.remove('player--winner')
+    player0El.classList.add('player--active')
+    player1El.classList.remove('player--active')
+
+} 
+
+IntialiseGame()
 
 function SwitchPlayer() {
     // Switch player 
@@ -63,7 +77,7 @@ document.querySelector('.btn--hold').addEventListener('click', function() {
         document.getElementById(`current--${activePlayer}`).textContent = 0 
             
         // if score is above 100
-        if (scores[activePlayer] >= 70) {
+        if (scores[activePlayer] >= 10) {
             playing = false
             diceEl.classList.add('hidden')
 
@@ -77,19 +91,4 @@ document.querySelector('.btn--hold').addEventListener('click', function() {
     }
 })
 
-document.querySelector('.btn--new').addEventListener('click', function(){
-    playing = true
-
-    activePlayer = 0 
-    currentScore = 0 
-
-    score0El.textContent = 0
-    score1El.textContent = 0
-    
-    document.getElementById(`current--${activePlayer}`).textContent = currentScore
-    document.querySelector('.score').textContent = currentScore
-
-    document.querySelector(`.player--${activePlayer}`).classList.add('player--active')
-    
-    document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner')
-})
+document.querySelector('.btn--new').addEventListener('click', IntialiseGame)
